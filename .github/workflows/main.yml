@@ -105,7 +105,7 @@ jobs:
       - name: Deploy application
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
-          tar -czf app.tar.gz app.py requirements.txt 2>/dev/null || tar -czf app.tar.gz app.py
+          tar -czf app.tar.gz app.py functions.py requirements.txt 2>/dev/null || tar -czf app.tar.gz app.py
           scp -i ~/.ssh/deploy_key app.tar.gz ubuntu@${{ steps.get-ip.outputs.instance_ip }}:/tmp/app.tar.gz
           ssh -i ~/.ssh/deploy_key ubuntu@${{ steps.get-ip.outputs.instance_ip }} << 'EOF'
             set -e
