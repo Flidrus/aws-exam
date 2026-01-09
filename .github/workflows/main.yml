@@ -31,10 +31,6 @@ jobs:
         run: |
           pytest
 
-      - name: Send
-        run: |
-          python send.py ${{ secrets.SSH_PUBLIC_KEY }} ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
